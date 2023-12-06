@@ -1,3 +1,5 @@
+from rich.console import Console
+from halo import Halo
 import asyncio
 import os
 import openai
@@ -10,6 +12,7 @@ from langchain.embeddings import OpenAIEmbeddings
 from langchain.prompts import ChatPromptTemplate
 from langchain.schema.output_parser import StrOutputParser
 from langchain.schema.runnable import RunnableLambda, RunnablePassthrough
+from langchain.callbacks.base import BaseCallbackHandler
 
 # Load the environment variables from the .env file
 load_dotenv()
@@ -78,14 +81,19 @@ chain = (
 
 # print(chain.invoke({"question": "what is next.js?", "language": "english"}))
 
+# load cli libs
+console = Console()
+spinner = Halo(text='AI is thinking', spinner='dots')
+
 async def conversation_loop():
     response_buffer = ""  # Buffer to store the AI's response
 
     while True:
-        user_input = input("User: ")  # Get user input from the command-line
+        user_input = console.input("[bold cyan]User[/bold cyan]: ")  # Get user input from the command-line
         if user_input.lower() == "exit":
             break  # Exit the conversation loop if the user enters "exit"
 
+        spinner.start()
         async for output in chain.astream({"question": user_input, "language": "english"}):
             if isinstance(output, str):
                 response_buffer += output
@@ -94,8 +102,9 @@ async def conversation_loop():
 
             # Check if the response buffer contains a complete response
             if response_buffer.endswith("."):
-                print("AI: " + response_buffer.strip())  # Print the complete response
-                response_buffer = ""  # Clear the response buffer
+                spinner.stop()
+                console.print("[bold green]AI[/bold green]:", response_buffer.strip())  # Print the complete response
+                response_buffer = ""  # Clear the response buffer  # Clear the response buffer  # Clear the response buffer
 
 if __name__ == "__main__":
     asyncio.run(conversation_loop())
