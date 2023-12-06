@@ -1,0 +1,25 @@
+URL: https://www.youtube.com/watch?v=OOUsvDOKlGs
+Title: 🔴 Let’s build a Complete SaaS with NEXT.JS 13! (Stripe Payments, Shadcn, Firebase, TS, NextAuth)
+Summary: The provided text is a detailed walkthrough of building a complete Software as a Service (SaaS) application using a wide range of technologies and tools. The SaaS app allows users to chat with anyone in any language, with real-time translation capabilities. The build includes the following key features and components:
+
+1. **Authentication**: Integration with Next.js authentication using NextAuth.js, including custom JWT tokens and synchronization with Firebase authentication to ensure users are logged in on both platforms.
+
+2. **Database**: Use of Firestore for storing user data, chat messages, and memberships, with Firestore rules to control read/write access based on user roles and subscription status.
+
+3. **Global State Management**: Implementation of Zustand for managing global state across the app, including user subscription status and selected language for translation.
+
+4. **Form Validation**: Utilization of Zod for form validation to ensure that user inputs are correctly formatted, particularly for email fields.
+
+5. **UI Components**: Use of Shad CN (Chakra UI) for designing the user interface, including buttons, dialogs, and other interactive elements.
+
+6. **Stripe Integration**: Setup of Stripe for handling payments, subscriptions, and billing management, with webhooks to update Firestore in real-time based on payment events.
+
+7. **Firebase Extensions**: Configuration of Firebase Extensions for translating text within Firestore and handling Stripe payments.
+
+8. **Server Actions and API Endpoints**: Creation of server actions for server-side events like generating Stripe portal links, and API endpoints for actions like recursively deleting chat data.
+
+9. **Chat Functionality**: Development of chat features, including creating new chats, adding users to chats, displaying chat messages, and handling chat input with translation.
+
+10. **Deployment**: Deployment of the app using Vercel, with environment variables setup and configuration for production.
+
+Throughout the build, the creator emphasizes the importance of providing value to viewers and demonstrates a commitment to high-quality, in-depth content. The build is intended to be a comprehensive example of a full-stack application that viewers can learn from and potentially use as a portfolio piece. The creator also mentions the availability of the code in a GitHub repository and encourages viewers to join their course, Zero to Full Stack Hero, for more in-depth learning and weekly coaching calls.
